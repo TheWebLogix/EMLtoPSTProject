@@ -34,7 +34,6 @@ public class ContentExtractor {
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Model model) {
-
         for ( MultipartFile file1: file ){
             if (!file1.isEmpty()){
                 try {
@@ -63,6 +62,8 @@ public class ContentExtractor {
                         String subject = message2.getSubject();
                         model.addAttribute("subject", subject);
                         message.setSubject(subject);
+                        message.setBody("<html><body><p>This is the HTML body text.</p></body></html>");
+                        message.setHtmlBody("<html><body>This is the HTML body</body></html>");
 
                         Address[] fromAddresses = message2.getFrom();
                         if (fromAddresses.length > 0) {
