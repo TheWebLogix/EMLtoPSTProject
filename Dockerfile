@@ -1,5 +1,3 @@
-FROM eclipse-temurin:17-jdk-alpine
-VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-EXPOSE 8080
+FROM openjdk:17
+ADD target/springboot-mysql-docker.jar springboot-mysql-docker.jar
+ENTRYPOINT ["java","-jar","/springboot-mysql-docker.jar"]
